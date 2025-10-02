@@ -40,13 +40,46 @@ class HashTable:
             print(f"Index {i}: {bucket}")
 
 
-ht = HashTable()
+def main():
+    ht = HashTable(10)  
 
-ht.insert(15, "apple")
-ht.insert(25, "banana")
-ht.insert(35, "cherry")
+    while True:
+        print("\n----- Hash Table Menu -----")
+        print("1. Insert")
+        print("2. Search")
+        print("3. Delete")
+        print("4. Display")
+        print("5. Exit")
 
-print("Search 25: ", ht.search(25))
-ht.delete(25)
-print("Search 25 after deletion: ", ht.search(25))
-ht.display()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            key = int(input("Enter key (integer): "))
+            value = input("Enter value: ")
+            ht.insert(key, value)
+
+        elif choice == "2":
+            key = int(input("Enter key to search: "))
+            result = ht.search(key)
+            if result is not None:
+                print(f"Found: Key {key} -> Value {result}")
+            else:
+                print(f"Key {key} not found.")
+
+        elif choice == "3":
+            key = int(input("Enter key to delete: "))
+            ht.delete(key)
+
+        elif choice == "4":
+            ht.display()
+
+        elif choice == "5":
+            print("Exiting ")
+            break
+
+        else:
+            print("Invalid choice ")
+
+
+if __name__ == "__main__":
+    main()
